@@ -40,7 +40,7 @@ pip install -r requirements.txt
 - Telegram bot token
 - Gemini API key
 
-Gemini Python SDK устанавливается пакетом `google-genai`, Telegram-библиотека — `pyTelegramBotAPI`, а Open-Meteo предоставляет geocoding endpoint и weather forecast API без отдельного API key для обычного использования. citeturn733390search0turn733390search1turn733390search2turn733390search8
+Gemini Python SDK устанавливается пакетом `google-genai`, Telegram-библиотека — `pyTelegramBotAPI`, а Open-Meteo предоставляет geocoding endpoint и weather forecast API без отдельного API key для обычного использования. 
 
 ## Пример `.env`
 
@@ -80,7 +80,7 @@ python -m weather_bot.main
 ## Замечания
 
 - Если LLM не смогла вытащить город, лучше подставлять значение по умолчанию в Python-коде, а не надеяться только на промпт.
-- Если Gemini вернул ошибку `429 RESOURCE_EXHAUSTED`, значит закончилась квота или лимит запросов для текущего проекта. Официальная документация Gemini рекомендует проверять rate limits и квоты в Google AI Studio. citeturn733390search15turn733390search18
+- Если Gemini вернул ошибку `429 RESOURCE_EXHAUSTED`, значит закончилась квота или лимит запросов для текущего проекта. Официальная документация Gemini рекомендует проверять rate limits и квоты в Google AI Studio. 
 - Open-Meteo использует отдельный geocoding API для поиска локации по названию и отдельные endpoints для прогноза и исторических данных. 
 
 ## Что добавить позже
