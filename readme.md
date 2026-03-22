@@ -14,6 +14,8 @@
 ```text
 weather_bot/
 ├── data/
+│   ├── config.json
+│   └── .env
 ├── bot.py
 ├── Config.py
 ├── date_provider.py
@@ -28,7 +30,7 @@ weather_bot/
 Установи зависимости в виртуальное окружение:
 
 ```bash
-pip install google-genai pyTelegramBotAPI requests python-dotenv
+pip install -r requirements.txt
 ```
 
 ## Что нужно настроить
