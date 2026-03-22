@@ -1,0 +1,90 @@
+# Weather Bot
+
+Телеграм-бот для получения прогноза погоды через Open-Meteo с разбором пользовательского запроса через Gemini.
+
+## Что умеет
+
+- принимает обычный текстовый запрос пользователя
+- пытается извлечь город и дату через LLM
+- получает прогноз или исторические данные из Open-Meteo
+- отправляет ответ в Telegram
+
+## Структура проекта
+
+```text
+weather_bot/
+├── data/
+├── bot.py
+├── Config.py
+├── date_provider.py
+├── llm.py
+├── main.py
+├── prompt_repository.py
+└── weather_api.py
+```
+
+## Зависимости
+
+Установи зависимости в виртуальное окружение:
+
+```bash
+pip install google-genai pyTelegramBotAPI requests python-dotenv
+```
+
+## Что нужно настроить
+
+Тебе понадобятся:
+
+- Telegram bot token
+- Gemini API key
+
+Gemini Python SDK устанавливается пакетом `google-genai`, Telegram-библиотека — `pyTelegramBotAPI`, а Open-Meteo предоставляет geocoding endpoint и weather forecast API без отдельного API key для обычного использования. citeturn733390search0turn733390search1turn733390search2turn733390search8
+
+## Пример `.env`
+
+Если `Config.py` читает переменные окружения, файл может выглядеть так:
+
+```env
+TELEGRAM_KEY=your_telegram_bot_token
+GEMINI_KEY=your_gemini_api_key
+```
+
+Если у тебя в `Config.py` используются другие имена переменных, подставь их вместо этих.
+
+## Как запустить
+
+Из корня проекта:
+
+```bash
+python weather_bot/main.py
+```
+
+Если у тебя проект оформлен как пакет и есть `__init__.py`, можно запускать так:
+
+```bash
+python -m weather_bot.main
+```
+
+## Как пользоваться ботом
+
+После запуска отправь боту сообщение в свободной форме, например:
+
+```text
+Какая погода в Москве завтра?
+Погода в Краснодаре 2026-03-25
+Что по погоде послезавтра?
+```
+
+## Замечания
+
+- Если LLM не смогла вытащить город, лучше подставлять значение по умолчанию в Python-коде, а не надеяться только на промпт.
+- Если Gemini вернул ошибку `429 RESOURCE_EXHAUSTED`, значит закончилась квота или лимит запросов для текущего проекта. Официальная документация Gemini рекомендует проверять rate limits и квоты в Google AI Studio. citeturn733390search15turn733390search18
+- Open-Meteo использует отдельный geocoding API для поиска локации по названию и отдельные endpoints для прогноза и исторических данных. citeturn733390search2turn733390search5turn733390search17
+
+## Что добавить позже
+
+- нормальную обработку ошибок
+- fallback без LLM
+- логирование
+- команды `/weather` и `/help`
+- тесты
